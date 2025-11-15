@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>El Horno Mexicano - Chatbot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fuente moderna -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+      /* Estilo general */
+      body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f5f5f5;
+        text-align: center;
+      }
+
+      /* Título centrado */
+      #titulo-pizzeria {
+        font-size: 32px;
+        font-weight: 600;
+        color: #333;
+        position: fixed;
+        top: 22%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        width: 90%;
+      }
+
+      /* Texto descriptivo */
+      #descripcion-pizzeria {
+        font-size: 16px;
+        color: #666;
+        position: fixed;
+        top: 32%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        width: 90%;
+      }
+
+      /* ------------------------------ */
+      /*   POSICIÓN DEL BOTÓN DEL CHAT  */
+      /*   (Desktop: centrado)          */
+      /* ------------------------------ */
+      .WACLauncher__Button,
+      #WACLauncher,
+      div[id^="WACLauncher"] {
+          position: fixed !important;
+          top: 46% !important;              /* debajo del texto */
+          left: 50% !important;
+          transform: translate(-50%, -50%) !important;
+          z-index: 9999 !important;
+      }
+
+      /* ------------------------------ */
+      /*   POSICIÓN DEL CHAT (Desktop)  */
+      /* ------------------------------ */
+      .WACWidget,
+      div[id^="WACWidget"] {
+          position: fixed !important;
+          top: 54% !important;              /* debajo del botón */
+          left: 50% !important;
+          transform: translate(-50%, 0) !important;
+          width: 380px !important;
+          max-width: 90vw !important;
+          height: 460px !important;
+          box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18) !important;
+          border-radius: 18px !important;
+          overflow: hidden !important;
+          z-index: 9998 !important;
+      }
+
+      /* ===========================================================
+         MODO CELULAR (<=600px)
+         - Dejamos el botón abajo a la derecha (posición estándar)
+         - Ajustamos el tamaño del chat para móvil
+         =========================================================== */
+      @media (max-width: 600px) {
+
+        #titulo-pizzeria {
+          top: 15%;
+          font-size: 24px;
+        }
+
+        #descripcion-pizzeria {
+          top: 24%;
+          font-size: 14px;
+        }
+
+        /* Botón: posición estándar móvil, abajo a la derecha */
+        .WACLauncher__Button,
+        #WACLauncher,
+        div[id^="WACLauncher"] {
+            bottom: 16px !important;
+            right: 16px !important;
+            top: auto !important;
+            left: auto !important;
+            transform: none !important;
+        }
+
+        /* Chat: ocupar casi todo el ancho, un poco más alto */
+        .WACWidget,
+        div[id^="WACWidget"] {
+            top: auto !important;
+            bottom: 72px !important;            /* encima del botón */
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            width: 94vw !important;
+            height: 65vh !important;
+        }
+      }
+
+    </style>
+</head>
+
+<body>
+
+    <h1 id="titulo-pizzeria">Asistente Virtual - El Horno Mexicano</h1>
+
+    <p id="descripcion-pizzeria">
+        Da clic en el botón azul para hablar con nuestro asistente y hacer tu pedido.
+    </p>
+
+    <!-- SCRIPT DE IBM WATSON ASSISTANT -->
+    <script>
+      window.watsonAssistantChatOptions = {
+        integrationID: "62a1c01b-0075-44cf-92d3-680cd0d96220",
+        region: "au-syd",
+        serviceInstanceID: "5ada4d87-a529-47d1-9a73-1aa029bb6e34",
+        onLoad: async (instance) => { await instance.render(); }
+      };
+
+      setTimeout(function(){
+        const t = document.createElement('script');
+        t.src = "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" +
+                (window.watsonAssistantChatOptions.clientVersion || "latest") +
+                "/WatsonAssistantChatEntry.js";
+        document.head.appendChild(t);
+      });
+    </script>
+
+</body>
+</html>
+
