@@ -44,8 +44,7 @@
       }
 
       /* ------------------------------ */
-      /*   POSICIÓN DEL BOTÓN DEL CHAT  */
-      /*   (Desktop: centrado)          */
+      /*   POSICIÓN DEL BOTÓN DEL CHAT  (Desktop: centrado) */
       /* ------------------------------ */
       .WACLauncher__Button,
       #WACLauncher,
@@ -77,8 +76,6 @@
 
       /* ===========================================================
          MODO CELULAR (<=600px)
-         - Dejamos el botón abajo a la derecha (posición estándar)
-         - Ajustamos el tamaño del chat para móvil
          =========================================================== */
       @media (max-width: 600px) {
 
@@ -92,7 +89,7 @@
           font-size: 14px;
         }
 
-        /* Botón: posición estándar móvil, abajo a la derecha */
+        /* Botón: abajo a la derecha (posición estándar móvil) */
         .WACLauncher__Button,
         #WACLauncher,
         div[id^="WACLauncher"] {
@@ -103,15 +100,16 @@
             transform: none !important;
         }
 
-        /* Chat: ocupar casi todo el ancho, un poco más alto */
+        /* Chat: más pequeño y centrado, no a pantalla completa */
         .WACWidget,
         div[id^="WACWidget"] {
             top: auto !important;
-            bottom: 72px !important;            /* encima del botón */
+            bottom: 90px !important;           /* un poco encima del botón */
             left: 50% !important;
             transform: translateX(-50%) !important;
-            width: 94vw !important;
-            height: 65vh !important;
+            width: 90vw !important;            /* casi todo el ancho */
+            height: 50vh !important;           /* ~mitad de la pantalla */
+            border-radius: 16px !important;
         }
       }
 
